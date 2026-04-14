@@ -1,0 +1,19 @@
+# Build output
+ffmpeg-merge
+ffmpeg-merge-*
+*.exe
+
+# Merged video output
+merged_*.mp4
+merged_*.mkv
+
+# Go cache
+.cache/
+
+# AI tool configs
+.claude/
+.codex
+
+# OS junk
+.DS_Store
+Thumbs.db
