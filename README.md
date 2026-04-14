@@ -1,16 +1,21 @@
 # FFmpeg-Merge
 
+[![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?logo=go&logoColor=white)](https://go.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 FFmpeg 智能视频合并工具 —— 自动章节标记、GPU 硬件加速、自然排序，支持交互式与命令行双模式。
+
+> Smart video merging powered by FFmpeg — auto chapters, GPU acceleration, natural sorting, interactive & CLI modes.
 
 ## 功能
 
-- **智能合并**：自动收集目录内视频文件（mp4/mkv/mov/m4v/ts/webm），按自然排序合并
-- **章节内嵌**：以文件名（去扩展名）作为章节标题，自动写入输出文件
-- **GPU 加速**：自动检测并验证可用硬件编码器（VAAPI / NVENC / QSV / VideoToolbox）
-- **三种质量模式**：快速无损直合 / 轻度压缩 / 重度压缩
-- **双模式运行**：无参数交互式问答，有参数命令行直接执行
-- **实时进度条**：百分比、已用时间、预计剩余
-- **EBML 安全**：默认输出到当前工作目录，避免 ffmpeg concat 读取自身输出文件
+- 🎬 **智能合并**：自动收集目录内视频文件（mp4/mkv/mov/m4v/ts/webm），按自然排序合并
+- 📑 **章节内嵌**：以文件名（去扩展名）作为章节标题，自动写入输出文件
+- ⚡ **GPU 加速**：自动检测并验证可用硬件编码器（VAAPI / NVENC / QSV / VideoToolbox）
+- 🎛️ **三种质量模式**：快速无损直合 / 轻度压缩 / 重度压缩
+- 🖥️ **双模式运行**：无参数交互式问答，有参数命令行直接执行
+- 📊 **实时进度条**：百分比、已用时间、预计剩余
+- 🔒 **EBML 安全**：默认输出到当前工作目录，避免 ffmpeg concat 读取自身输出文件
 
 ## 依赖
 
@@ -40,6 +45,36 @@ GOOS=windows GOARCH=amd64 go build -o ffmpeg-merge-windows-amd64.exe .
 ```
 
 按提示依次输入目录、选择编码器、质量模式、输出路径。
+
+<details>
+<summary>交互模式流程示意</summary>
+
+```
+$ ./ffmpeg-merge
+
+📂 请输入视频所在目录: /home/user/videos
+   找到 5 个视频文件
+
+⚡ 检测到可用 GPU 编码器:
+   [1] hevc_vaapi
+   [2] h264_vaapi
+   [0] 不使用 GPU
+   请选择: 1
+
+🎛️ 选择质量模式:
+   [1] 快速无损 (copy)
+   [2] 轻度压缩
+   [3] 重度压缩
+   请选择: 2
+
+📄 输出文件名: merged.mkv
+
+🚀 开始合并...
+   ████████████████████░░░░  78%  02:15 / ~00:38
+✅ 完成！输出: /home/user/merged.mkv
+```
+
+</details>
 
 ### 命令行模式
 
@@ -78,4 +113,4 @@ GOOS=windows GOARCH=amd64 go build -o ffmpeg-merge-windows-amd64.exe .
 
 ## 许可
 
-MIT
+本项目基于 [MIT](LICENSE) 许可证开源。
